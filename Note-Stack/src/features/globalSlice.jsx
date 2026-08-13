@@ -5,6 +5,8 @@ const initialState = {
   isCreatTaskModalOpen: false,
   isDeleteTaskModalOpen: false,
   isEditTaskModalOpen: false,
+  sideBarCollapsed: false,
+  searchQuery: "",
 };
 
 export const globalSlice = createSlice({
@@ -22,9 +24,21 @@ export const globalSlice = createSlice({
     setEditModal: (state, action) => {
       state.isEditTaskModalOpen = action.payload;
     },
+
+    setSideBarCollapsed: (state, action) => {
+      state.sideBarCollapsed = action.payload;
+    },
+
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
   },
 });
 
-export const { setCreateTaskModal, setDeleteTaskModal, setEditModal } =
-  globalSlice.actions;
+export const {
+  setCreateTaskModal,
+  setDeleteTaskModal,
+  setEditModal,
+  searchQuery,
+} = globalSlice.actions;
 export default globalSlice.reducer;
