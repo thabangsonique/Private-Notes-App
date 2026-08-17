@@ -11,15 +11,17 @@ const app = express();
 
 // MIDDLEWARES
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://note-stack-4w075i74q-thabangsoniques-projects.vercel.app",
+    ],
+  }),
+);
 
 //ROUTES
 // authroutes
 app.use("/api", authRoutes);
 app.use("/api", authenticatedUser, tasksRoutes);
 app.use("/api", authenticatedUser, notesRoutes);
-
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
-  console.log("SERVER IS RUNNING LIVE ON PORT:", port);
-});
