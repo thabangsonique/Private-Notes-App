@@ -31,10 +31,6 @@ export default function TaskStatus({ status, statusCount }) {
     },
 
     drop: async (item) => {
-      console.log("🔥 DROP DETECTED");
-      console.log("Dragged item:", item);
-      console.log("Target status:", status);
-
       if (item.status === status) {
         return;
       }

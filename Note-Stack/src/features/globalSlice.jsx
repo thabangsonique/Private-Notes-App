@@ -5,7 +5,7 @@ const initialState = {
   isCreateTaskModalOpen: false,
   isDeleteTaskModalOpen: false,
   isEditTaskModalOpen: false,
-  sideBarCollapsed: false,
+
   searchQuery: "",
 };
 
