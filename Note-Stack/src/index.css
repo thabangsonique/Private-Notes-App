@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f7f9fb;
+  --color-background: #f5f5f5;
   --color-primary-btn: #000000;
   --color-active: #d1d5db;
   --color-secondary: #eceef0;
   --color-green: #009668;
+  --color-text-muted: #45464d;
 }
 
 .hide-scrollbar {
@@ -14,4 +15,8 @@
 }
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
+}
+
+.form-btn {
+  @apply flex items-center justify-center py-5 hover:scale-103 hover:cursor-pointer shadow-xl transition-all duration-300;
 }

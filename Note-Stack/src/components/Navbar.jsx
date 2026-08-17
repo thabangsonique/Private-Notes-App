@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Navbar() {
   return (
-    <div className="flex items-center justify-between w-full h-[80px]  px-15">
+    <div className="flex sticky top-0 z-50 bg-background items-center justify-between w-full h-[80px]  px-15">
       {/* search bar */}
       <div className="flex items-center bg-white rounded w-[328px] focus-within:shadow-lg border-b border-gray-400 py-2 px-2 space-x-3 transition-all duration-300">
         <Search />

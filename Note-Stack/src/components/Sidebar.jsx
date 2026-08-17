@@ -9,6 +9,7 @@ import {
   Tags,
   Settings,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const menuItems = [
   {
@@ -71,7 +72,8 @@ export default function Sidebar() {
           {menuItems.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <Link
+                to={item.href}
                 onClick={() => setisActive(item.title)}
                 key={idx}
                 className={`relative flex items-center space-x-3 mb-4 hover:cursor-pointer hover:scale-110 hover:shadow-lg h-[46px] py-[10px] pl-[12px] rounded-lg transition-all duration-300 ${isActive === item.title ? "bg-active" : ""}`}
@@ -83,7 +85,7 @@ export default function Sidebar() {
 
                 <Icon />
                 <span>{item.title}</span>
-              </div>
+              </Link>
             );
           })}
         </div>
