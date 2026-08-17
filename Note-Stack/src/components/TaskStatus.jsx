@@ -6,7 +6,14 @@ import { useDrop } from "react-dnd";
 import { toast } from "sonner";
 
 export default function TaskStatus({ status, statusCount }) {
-  const { data: tasks, error, isError, isLoading } = useGetTasksQuery();
+  const {
+    data: tasks,
+    error,
+    isError,
+    isLoading,
+  } = useGetTasksQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
   const [updateTaskStatus] = useUpdateTaskStatusMutation();
 
   //function for updating status.

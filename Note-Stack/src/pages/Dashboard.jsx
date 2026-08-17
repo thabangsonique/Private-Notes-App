@@ -73,6 +73,7 @@ export default function Dashboard() {
           {data?.map((note, idx) => (
             <NotesCard
               key={idx}
+              id={note.id}
               title={note.title}
               description={note.description}
             />

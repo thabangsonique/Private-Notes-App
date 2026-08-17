@@ -80,6 +80,15 @@ export const api = createApi({
 
       invalidatesTags: ["Tasks"],
     }),
+
+    deleteTask: build.mutation({
+      // expect an `id` string/number as the argument
+      query: (id) => ({
+        url: `/api/tasks/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Notes"],
+    }),
   }),
 });
 
@@ -91,4 +100,5 @@ export const {
   useGetTasksQuery,
   useUpdateTaskStatusMutation,
   useCreateTaskMutation,
+  useDeleteTaskMutation,
 } = api;

@@ -1,6 +1,8 @@
-import { CheckCircle, Clock } from "lucide-react";
+import { CheckCircle, Clock, Trash2 } from "lucide-react";
 import React from "react";
 import { useDrag } from "react-dnd";
+import { useDeleteTaskMutation } from "../features/api";
+import { toast } from "sonner";
 
 export default function TaskCard({
   id,
@@ -11,7 +13,22 @@ export default function TaskCard({
   priority,
 }) {
   // console.log(`here is the task status: ${status}`);
+  //delete note.
+  const [deleteTask, { error }] = useDeleteTaskMutation();
+  const handleDelete = async () => {
+    try {
+      await deleteTask(id).unwrap();
 
+      if (error) {
+        console.error("Failed to delet task");
+        return;
+      }
+
+      toast.success("Task deleted successfully");
+    } catch (error) {
+      console.error("Internal server error", error);
+    }
+  };
   //react drag and drop function.
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "TASK",
@@ -87,6 +104,14 @@ export default function TaskCard({
         {/* dot. status dependant */}
         <div className="bg-gray-400 w-3 h-3 rounded-full" />
       </div>
+
+      <Trash2
+        onClick={(e) => {
+          e.stopPropagation();
+          handleDelete();
+        }}
+        className="text-red-500 mt-5"
+      />
     </div>
   );
 }

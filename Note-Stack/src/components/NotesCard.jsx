@@ -1,8 +1,26 @@
-import { ExternalLink } from "lucide-react";
+import { Delete, ExternalLink, Trash, Trash2 } from "lucide-react";
 import React from "react";
 import { Clock } from "lucide-react";
+import { useDeleteNoteMutation } from "../features/api";
+import { toast } from "sonner";
 
-export default function NotesCard({ title, description, onClick }) {
+export default function NotesCard({ title, description, onClick, id }) {
+  const [deleteNote, { error }] = useDeleteNoteMutation();
+  const handleDelete = async () => {
+    try {
+      await deleteNote(id).unwrap();
+
+      if (error) {
+        console.error("Failed to delet note");
+        return;
+      }
+
+      toast.success("Note deleted successfully");
+    } catch (error) {
+      console.error("Internal server error", error);
+    }
+  };
+
   return (
     <div
       onClick={onClick}
@@ -26,6 +44,9 @@ export default function NotesCard({ title, description, onClick }) {
         {/* dot. status dependant */}
         <div className="bg-gray-400 w-3 h-3 rounded-full" />
       </div>
+
+      {/* delete note */}
+      <Trash2 onClick={handleDelete} className="text-red-500 mt-5" />
     </div>
   );
 }
