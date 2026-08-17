@@ -19,7 +19,4 @@ app.use("/api", authRoutes);
 app.use("/api", authenticatedUser, tasksRoutes);
 app.use("/api", authenticatedUser, notesRoutes);
 
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
-  console.log("SERVER IS RUNNING LIVE ON PORT:", port);
-});
+export default app;

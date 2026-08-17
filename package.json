@@ -1,1 +1,7 @@
-{}
+{
+  "name": "note-stack",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix Note-Stack install && npm --prefix Note-Stack run build"
+  }
+}

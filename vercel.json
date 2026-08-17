@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "Note-Stack/dist",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/Backend/api"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/Note-Stack/index.html"
+    }
+  ]
+}
