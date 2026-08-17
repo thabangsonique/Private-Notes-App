@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
+import CreateNewModal from "./components/CreateNewModal";
 
 export default function LayoutWrapper() {
   const sidebarCollapse = useSelector((state) => state.global.sideBarCollapsed);
@@ -13,6 +14,7 @@ export default function LayoutWrapper() {
       <main className={`w-full ${sidebarCollapse ? "" : "md:ml-[256px]"}`}>
         <Navbar />
         <Outlet />
+        <CreateNewModal />
       </main>
     </div>
   );

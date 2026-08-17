@@ -6,9 +6,13 @@ import { useGetNotesQuery, useGetTasksQuery } from "../features/api.js";
 import GlobalHeader from "../components/GlobalHeader.jsx";
 import { Plus } from "lucide-react";
 import TaskCard from "../components/TaskCard.jsx";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
-  const { data, error, isError, isLoading } = useGetNotesQuery();
+  const navigate = useNavigate();
+  const { data, error, isError, isLoading } = useGetNotesQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
   const {
     data: tasks,
     error: tasksError,
@@ -36,8 +40,11 @@ export default function Dashboard() {
 
         {/* right-side */}
         <div className="flex items-center justify-between gap-3 hover:scale-110 hover:cursor-pointer transition-all duration-300">
-          <p className="font-semibold">View all notes</p>
-          <ArrowRight />
+          <Link to={"/notes"} className="flex space-x-3">
+            {" "}
+            <p className="font-semibold">View all notes</p>
+            <ArrowRight />
+          </Link>
         </div>
       </div>
       {/* line */}
@@ -107,7 +114,7 @@ export default function Dashboard() {
         </div>
       ) : (
         <div className="grid xl:grid-cols-3 gap-7 mt-10">
-          {tasks.map((task, idx) => (
+          {tasks?.map((task, idx) => (
             <TaskCard
               key={idx}
               title={task.title}

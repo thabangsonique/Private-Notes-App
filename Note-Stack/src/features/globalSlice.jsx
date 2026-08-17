@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   selectTaskId: null,
-  isCreatTaskModalOpen: false,
+  isCreateTaskModalOpen: false,
   isDeleteTaskModalOpen: false,
   isEditTaskModalOpen: false,
   sideBarCollapsed: false,
@@ -14,7 +14,7 @@ export const globalSlice = createSlice({
   initialState,
   reducers: {
     setCreateTaskModal: (state, action) => {
-      state.isCreatTaskModalOpen = action.payload;
+      state.isCreateTaskModalOpen = action.payload;
     },
 
     setDeleteTaskModal: (state, action) => {
@@ -39,6 +39,6 @@ export const {
   setCreateTaskModal,
   setDeleteTaskModal,
   setEditModal,
-  searchQuery,
+  setSearchQuery,
 } = globalSlice.actions;
 export default globalSlice.reducer;

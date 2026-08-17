@@ -1,26 +1,29 @@
 import { Search, Bell } from "lucide-react";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCreateTaskModal } from "../features/globalSlice";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+  const isCreateTaskModalOpen = useSelector(
+    (state) => state.global.isCreateTaskModalOpen,
+  );
   return (
     <div className="flex sticky top-0 z-50 bg-background items-center justify-between w-full h-[80px]  px-15">
-      {/* search bar */}
-      <div className="flex items-center bg-white rounded w-[328px] focus-within:shadow-lg border-b border-gray-400 py-2 px-2 space-x-3 transition-all duration-300">
-        <Search />
-        <input placeholder="Search tags..." className="focus:outline-none " />
-      </div>
-
       {/* left-side */}
-      <div className="flex items-center space-x-5">
+      <div className="flex items-center space-x-5 ml-auto">
         <Bell />
         <div className="bg-gray-500/40 w-0.5 h-7" />
         {/* cta create task */}
-        <button className="text-white bg-black py-[10px] px-[20px] rounded-full shadow-xl hover:scale-110 hover:cursor-pointer transition-all duration-300">
+        <button
+          onClick={() => dispatch(setCreateTaskModal(true))}
+          className="text-white bg-black py-[10px] px-[20px] rounded-full shadow-xl hover:scale-110 hover:cursor-pointer transition-all duration-300"
+        >
           Quick Add
         </button>
 
         {/* profile icon */}
-        <div className="rounded-full overflow-hidden h-12 w-12">
+        <div className="hover:scale-110 hover:cursor-pointer rounded-full overflow-hidden h-12 w-12 transition-all duration-300">
           {" "}
           <img src="/user.png" alt="User image" />
         </div>

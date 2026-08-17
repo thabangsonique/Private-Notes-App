@@ -64,7 +64,7 @@ export const api = createApi({
 
     createTask: build.mutation({
       query: (task) => ({
-        url: "",
+        url: "/api/tasks",
         method: "POST",
         body: task,
       }),
@@ -90,4 +90,5 @@ export const {
   useUpdateNotesMutation,
   useGetTasksQuery,
   useUpdateTaskStatusMutation,
+  useCreateTaskMutation,
 } = api;

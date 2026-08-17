@@ -2,9 +2,12 @@ import { ExternalLink } from "lucide-react";
 import React from "react";
 import { Clock } from "lucide-react";
 
-export default function NotesCard({ title, description }) {
+export default function NotesCard({ title, description, onClick }) {
   return (
-    <div className="p-6 border bg-white border-white rounded-xl shadow-lg hover:scale-103 hover:cursor-pointer transition-all duration-300 ">
+    <div
+      onClick={onClick}
+      className="p-6 border bg-white border-white rounded-xl shadow-lg hover:scale-103 hover:cursor-pointer transition-all duration-300 "
+    >
       {/* title + icon */}
       <div className="flex justify-between">
         {" "}
