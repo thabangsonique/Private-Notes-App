@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CreateNewModal from "./components/CreateNewModal";
+import UpdateModal from "./components/updateModal";
 
 export default function LayoutWrapper() {
   const sidebarCollapse = useSelector((state) => state.global.sideBarCollapsed);
@@ -15,6 +16,7 @@ export default function LayoutWrapper() {
         <Navbar />
         <Outlet />
         <CreateNewModal />
+        <UpdateModal />
       </main>
     </div>
   );

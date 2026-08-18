@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectTaskId: null,
+  selectNoteId: null,
   isCreateTaskModalOpen: false,
   isDeleteTaskModalOpen: false,
   isEditTaskModalOpen: false,
-
-  searchQuery: "",
 };
 
 export const globalSlice = createSlice({
@@ -32,6 +30,10 @@ export const globalSlice = createSlice({
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
     },
+
+    setSelectedNoteId: (state, action) => {
+      state.selectedNoteId = action.payload;
+    },
   },
 });
 
@@ -40,5 +42,6 @@ export const {
   setDeleteTaskModal,
   setEditModal,
   setSearchQuery,
+  setSelectedNoteId,
 } = globalSlice.actions;
 export default globalSlice.reducer;
