@@ -1,14 +1,21 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "Note-Stack/dist",
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/Backend/api"
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "backend": {
+      "root": "Backend",
+      "framework": "express"
     },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+    "note-stack": {
+      "root": "Note-Stack",
+      "framework": "vite",
+      "outputDirectory": "dist",
+      "bindings": [
+        { "type": "service", "service": "backend", "format": "url", "env": "BACKEND_URL" }
+      ]
     }
+  },
+  "rewrites": [
+    { "source": "/api/:path*", "destination": { "service": "backend" } },
+    { "source": "/(.*)", "destination": { "service": "note-stack" } }
   ]
 }
