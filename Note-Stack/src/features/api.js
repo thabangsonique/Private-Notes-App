@@ -4,8 +4,8 @@ import { supabase } from "../lib/config/supabase";
 // Frontend should call backend HTTP endpoints via `fetch`/RTK Query only.
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_API_BASE_URL, //authentication session verification.
+    baseQuery: fetchBaseQuery({
+      baseUrl: import.meta.env.VITE_API_BASE_URL || '',
     prepareHeaders: async (headers) => {
       const {
         data: { session },
